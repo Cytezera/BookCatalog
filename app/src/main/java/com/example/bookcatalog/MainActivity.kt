@@ -9,7 +9,14 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
 
+        if (savedInstanceState == null){
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.search_container, SearchFragment())
+                .replace(R.id.category_container, CategoryFragment())
+                .replace(R.id.book_short_container, BookshortFragment())
+                .commit()
+        }
     }
 }
