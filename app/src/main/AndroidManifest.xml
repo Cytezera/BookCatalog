@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookCatalog">
         <activity
+            android:name=".BooksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

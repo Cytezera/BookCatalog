@@ -1,3 +1,5 @@
+//Fragment for Search bar in main page
+
 package com.example.bookcatalog
 
 import android.os.Bundle

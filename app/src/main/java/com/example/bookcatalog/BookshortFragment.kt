@@ -1,3 +1,5 @@
+//Fragment for books in main page
+
 package com.example.bookcatalog
 
 import android.os.Bundle

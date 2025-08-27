@@ -1,7 +1,12 @@
+//Book Class
+
 package com.example.bookcatalog
 
-import com.example.bookcatalog.R
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+
+@Parcelize
 data class Book(
     val id: Int,
     val title: String,
@@ -9,7 +14,7 @@ data class Book(
     val desc: String,
     val categories: List<String>,
     val imageId : Int
-){
+):Parcelable{
     companion object{
         val bookList = listOf(
             Book(

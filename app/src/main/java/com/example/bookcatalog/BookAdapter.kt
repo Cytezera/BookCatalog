@@ -1,3 +1,5 @@
+//Adapter for recyclerview for books  at main page
+
 package com.example.bookcatalog
 
 import android.content.Context
@@ -9,6 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.ImageView
+import android.content.Intent
+
 
 
 class BookAdapter(
@@ -27,9 +31,19 @@ class BookAdapter(
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
+
+
         val book = books[position]
+
+
         holder.textTitle.text = book.title
         holder.bookImage.setImageResource(book.imageId)
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, BookDetailsActivity::class.java)
+            intent.putExtra("book_data", book)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = books.size
