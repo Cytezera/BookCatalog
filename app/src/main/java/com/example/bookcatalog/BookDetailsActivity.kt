@@ -16,6 +16,7 @@ class BookDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_details)
 
+
         val book: Book? = intent.getParcelableExtra("book_details")
 
         // Initialize views
