@@ -2,8 +2,6 @@ package com.example.bookcatalog
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -17,20 +15,16 @@ class BookDetailsActivity : AppCompatActivity() {
 
         val book: Book? = intent.getParcelableExtra("book_details")
 
-        val bookImage: ImageView = findViewById(R.id.detail_book_image)
-        val bookTitle: TextView = findViewById(R.id.detail_book_title)
-        val bookAuthor: TextView = findViewById(R.id.detail_book_author)
-        val bookDesc: TextView = findViewById(R.id.detail_book_desc)
-        val bookCategories: TextView = findViewById(R.id.detail_book_categories)
         val closeButton: Button = findViewById(R.id.close_button)
         val favoriteButton: Button = findViewById(R.id.favorite_button)
 
         if (book != null) {
-            bookImage.setImageResource(book.imageId)
-            bookTitle.text = book.title
-            bookAuthor.text = "by ${book.author}"
-            bookDesc.text = book.desc
-            bookCategories.text = "Categories: ${book.categories.joinToString(", ")}"
+            if (savedInstanceState == null) {
+                val fragment = BookDetailsFragment.newInstance(book)
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.book_details_container, fragment)
+                    .commit()
+            }
 
             loadFavoriteStatus(book)
             updateFavoriteButton(favoriteButton)
@@ -39,9 +33,7 @@ class BookDetailsActivity : AppCompatActivity() {
             finish()
         }
 
-        closeButton.setOnClickListener {
-            finish()
-        }
+        closeButton.setOnClickListener { finish() }
 
         favoriteButton.setOnClickListener {
             book?.let {
@@ -67,11 +59,7 @@ class BookDetailsActivity : AppCompatActivity() {
 
     private fun toggleFavorite() {
         isFavorite = !isFavorite
-        val message = if (isFavorite) {
-            "Added to favorites"
-        } else {
-            "Removed from favorites"
-        }
+        val message = if (isFavorite) "Added to favorites" else "Removed from favorites"
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
