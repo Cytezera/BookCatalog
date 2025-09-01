@@ -6,33 +6,34 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.core.content.ContextCompat
 
 class BookDetailsActivity : AppCompatActivity() {
-
-    private var book: Book? = null
+    private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_details)
 
-
         val book: Book? = intent.getParcelableExtra("book_details")
 
-        // Initialize views
         val bookImage: ImageView = findViewById(R.id.detail_book_image)
         val bookTitle: TextView = findViewById(R.id.detail_book_title)
         val bookAuthor: TextView = findViewById(R.id.detail_book_author)
         val bookDesc: TextView = findViewById(R.id.detail_book_desc)
         val bookCategories: TextView = findViewById(R.id.detail_book_categories)
         val closeButton: Button = findViewById(R.id.close_button)
+        val favoriteButton: Button = findViewById(R.id.favorite_button)
 
         if (book != null) {
             bookImage.setImageResource(book.imageId)
             bookTitle.text = book.title
             bookAuthor.text = "by ${book.author}"
             bookDesc.text = book.desc
-            bookCategories.text = book.categories.joinToString(", ")
+            bookCategories.text = "Categories: ${book.categories.joinToString(", ")}"
+
+            loadFavoriteStatus(book)
+            updateFavoriteButton(favoriteButton)
         } else {
             Toast.makeText(this, "No book details found", Toast.LENGTH_SHORT).show()
             finish()
@@ -40,6 +41,57 @@ class BookDetailsActivity : AppCompatActivity() {
 
         closeButton.setOnClickListener {
             finish()
+        }
+
+        favoriteButton.setOnClickListener {
+            book?.let {
+                toggleFavorite()
+                updateFavoriteButton(favoriteButton)
+                saveFavoriteStatus(it)
+            }
+        }
+    }
+
+    private fun loadFavoriteStatus(book: Book) {
+        val sharedPref = getSharedPreferences("book_favorites", MODE_PRIVATE)
+        isFavorite = sharedPref.getBoolean("book_${book.id}", false)
+    }
+
+    private fun saveFavoriteStatus(book: Book) {
+        val sharedPref = getSharedPreferences("book_favorites", MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putBoolean("book_${book.id}", isFavorite)
+            apply()
+        }
+    }
+
+    private fun toggleFavorite() {
+        isFavorite = !isFavorite
+        val message = if (isFavorite) {
+            "Added to favorites"
+        } else {
+            "Removed from favorites"
+        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun updateFavoriteButton(favoriteButton: Button) {
+        if (isFavorite) {
+            favoriteButton.text = "Remove from Favorites"
+            favoriteButton.setCompoundDrawablesWithIntrinsicBounds(
+                R.drawable.ic_favorite_filled, 0, 0, 0
+            )
+            favoriteButton.setBackgroundColor(
+                ContextCompat.getColor(this, android.R.color.holo_red_light)
+            )
+        } else {
+            favoriteButton.text = "Add to Favorites"
+            favoriteButton.setCompoundDrawablesWithIntrinsicBounds(
+                R.drawable.ic_favorite_border, 0, 0, 0
+            )
+            favoriteButton.setBackgroundColor(
+                ContextCompat.getColor(this, android.R.color.holo_blue_light)
+            )
         }
     }
 }
