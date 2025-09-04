@@ -13,7 +13,7 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Simple UI only fragment no search handling yet
+        // Simple UI-only fragmentno search handling yet
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 }
