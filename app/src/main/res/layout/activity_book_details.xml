@@ -15,20 +15,10 @@
 
         <Button
             android:id="@+id/close_button"
-            android:layout_width="wrap_content"
+            android:layout_width="111dp"
             android:layout_height="wrap_content"
             android:text="Close" />
 
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:maxLines="1"
-            android:text="Book Title"
-            android:textAlignment="center"
-            android:textSize="35sp"
-            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Fragment Container -->
@@ -36,11 +26,21 @@
     <FrameLayout
         android:id="@+id/book_details_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="9dp"
         android:layout_weight="1"
         android:background="@android:color/white"
         android:padding="8dp">
 
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="163dp"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:text="Book Title"
+            android:textAlignment="center"
+            android:textSize="35sp"
+            android:textStyle="bold" />
     </FrameLayout>
 
     <ImageView
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:maxLines="2"
-        android:text="Book Title"
+        android:text="Book Desc"
         android:textAlignment="center"
         android:textSize="20sp" />
 

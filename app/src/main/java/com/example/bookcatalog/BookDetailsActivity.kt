@@ -3,6 +3,7 @@ package com.example.bookcatalog
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
@@ -17,8 +18,12 @@ class BookDetailsActivity : AppCompatActivity() {
 
         val closeButton: Button = findViewById(R.id.close_button)
         val favoriteButton: Button = findViewById(R.id.favorite_button)
+        val titleText: TextView = findViewById(R.id.textTitle)
 
-        /*if (book != null) {
+        if (book != null) {
+            titleText.text = book.title
+            /*
+
             if (savedInstanceState == null) {
                 val fragment = BookDetailsFragment.newInstance(book)
                 supportFragmentManager.beginTransaction()
@@ -26,12 +31,14 @@ class BookDetailsActivity : AppCompatActivity() {
                     .commit()
             }
 
+             */
+
             loadFavoriteStatus(book)
             updateFavoriteButton(favoriteButton)
         } else {
             Toast.makeText(this, "No book details found", Toast.LENGTH_SHORT).show()
             finish()
-        }*/
+        }
 
         closeButton.setOnClickListener { finish() }
 

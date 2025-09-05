@@ -41,7 +41,7 @@ class BookAdapter(
 
         holder.itemView.setOnClickListener{
             val intent = Intent(context, BookDetailsActivity::class.java)
-            intent.putExtra("book_data", book)
+            intent.putExtra("book_details", book)
             context.startActivity(intent)
         }
     }
