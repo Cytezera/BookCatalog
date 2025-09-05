@@ -19,10 +19,14 @@ class BookDetailsActivity : AppCompatActivity() {
         val closeButton: Button = findViewById(R.id.close_button)
         val favoriteButton: Button = findViewById(R.id.favorite_button)
         val titleText: TextView = findViewById(R.id.textTitle)
+        val descText: TextView = findViewById(R.id.textDesc)
+        val imageView: ImageView = findViewById(R.id.bookImage)
 
         if (book != null) {
             titleText.text = book.title
-            /*
+            descText.text = book.desc
+            imageView.setImageResource(book.imageId)
+            
 
             if (savedInstanceState == null) {
                 val fragment = BookDetailsFragment.newInstance(book)
@@ -30,8 +34,6 @@ class BookDetailsActivity : AppCompatActivity() {
                     .replace(R.id.book_details_container, fragment)
                     .commit()
             }
-
-             */
 
             loadFavoriteStatus(book)
             updateFavoriteButton(favoriteButton)
@@ -73,27 +75,21 @@ class BookDetailsActivity : AppCompatActivity() {
     private fun updateFavoriteButton(favoriteButton: Button) {
         if (isFavorite) {
             favoriteButton.text = "Remove from Favorites"
-            /*
             favoriteButton.setCompoundDrawablesWithIntrinsicBounds(
                 R.drawable.ic_favorite_filled, 0, 0, 0
             )
             favoriteButton.setBackgroundColor(
                 ContextCompat.getColor(this, android.R.color.holo_red_light)
             )
-
-
-             */
         } else {
             favoriteButton.text = "Add to Favorites"
-            /*
             favoriteButton.setCompoundDrawablesWithIntrinsicBounds(
-                ContextCompat.getColor(this, android.R.color.holo_orange_light)
+                R.drawable.ic_favorite_border, 0, 0, 0
             )
             favoriteButton.setBackgroundColor(
                 ContextCompat.getColor(this, android.R.color.holo_blue_light)
             )
 
-             */
         }
     }
 }
