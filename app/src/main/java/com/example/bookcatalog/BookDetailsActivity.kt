@@ -27,7 +27,10 @@ class BookDetailsActivity : AppCompatActivity() {
             titleText.text = book.title
             descText.text = book.desc
             imageView.setImageResource(book.imageId)
-            
+
+            titleText.maxLines = 3
+            descText.maxLines = 5
+
             /*
             if (savedInstanceState == null) {
                 val fragment = BookDetailsFragment.newInstance(book)
