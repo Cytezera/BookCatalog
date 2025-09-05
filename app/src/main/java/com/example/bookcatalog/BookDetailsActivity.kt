@@ -29,7 +29,8 @@ class BookDetailsActivity : AppCompatActivity() {
             imageView.setImageResource(book.imageId)
 
             titleText.maxLines = 3
-            descText.maxLines = 5
+            descText.maxLines = 12
+
 
             /*
             if (savedInstanceState == null) {
