@@ -2,6 +2,7 @@ package com.example.bookcatalog
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -27,14 +28,14 @@ class BookDetailsActivity : AppCompatActivity() {
             descText.text = book.desc
             imageView.setImageResource(book.imageId)
             
-
+            /*
             if (savedInstanceState == null) {
                 val fragment = BookDetailsFragment.newInstance(book)
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.book_details_container, fragment)
                     .commit()
             }
-
+        */
             loadFavoriteStatus(book)
             updateFavoriteButton(favoriteButton)
         } else {
