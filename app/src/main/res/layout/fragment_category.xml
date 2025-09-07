@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingStart="12dp"
-    android:paddingEnd="12dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="4dp"
-    android:gravity="center"
-    android:baselineAligned="false">
+    android:scrollbars="none">
 
-    <Button
-        android:id="@+id/btnFantasy"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Fantasy"/>
-    <Button
-        android:id="@+id/btnRomance"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_weight="1"
-        android:text="Romance"/>
-    <Button
-        android:id="@+id/btnMystery"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Mystery"/>
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-    <Button
-        android:id="@+id/btnFavourite"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Favouritie"/>
+        <Button
+            android:id="@+id/btnFantasy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fantasy"/>
+        <Button
+            android:id="@+id/btnRomance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="Romance"/>
+        <Button
+            android:id="@+id/btnMystery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mystery"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnFavourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Favourite"/>
+    </LinearLayout>
+</HorizontalScrollView>

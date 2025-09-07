@@ -48,7 +48,7 @@ data class Book(
                 id = 4,
                 title = "Harry Potter and the Goblet of Fire",
                 author = "J.K. Rowling",
-                desc = "J.K. Rowling",
+                desc = "Harry is inexplicably chosen as a fourth champion in the dangerous Triwizard Tournament alongside students from other wizarding schools, leading to thrilling but perilous magical tasks. He also experiences disturbing dreams, which hint at Voldemort's return to power. During the tournament's final task, Harry and Cedric Diggory are transported to a graveyard, where Voldemort murders Cedric and attempts to kill Harry, who barely escapes.",
                 categories = listOf("Fantasy"),
                 imageId =R.drawable.hp4
 

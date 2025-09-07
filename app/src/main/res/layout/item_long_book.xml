@@ -36,7 +36,7 @@
             android:id="@+id/textDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Book description goes here..."
+            android:text="Book description"
             android:textSize="14sp"
             android:layout_marginTop="4dp"
             android:maxLines="3"
