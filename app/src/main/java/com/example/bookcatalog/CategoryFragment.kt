@@ -34,10 +34,15 @@ class CategoryFragment : Fragment() {
         val btnFantasy =view.findViewById<Button>(R.id.btnFantasy)
         val btnRomance =view.findViewById<Button>(R.id.btnRomance)
         val btnMystery = view.findViewById<Button>(R.id.btnMystery)
+        val btnFavourite = view.findViewById<Button>(R.id.btnFavourite)
 
-        btnFantasy.setOnClickListener { openBookActivity(CAT_FANTASY) }
-        btnRomance.setOnClickListener { openBookActivity(CAT_ROMANCE) }
-        btnMystery.setOnClickListener { openBookActivity(CAT_MYSTERY) }
+        btnFantasy.setOnClickListener {
+            openBookActivity(CAT_FANTASY) }
+
+        btnRomance.setOnClickListener{
+            openBookActivity(CAT_ROMANCE) }
+        btnMystery.setOnClickListener {
+            openBookActivity(CAT_MYSTERY) }
 
     }
     private fun openBookActivity(category: String){

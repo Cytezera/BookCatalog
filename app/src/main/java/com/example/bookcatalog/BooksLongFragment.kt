@@ -14,25 +14,34 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 
 
-class BookshortFragment : Fragment() {
+class BooksLongFragment : Fragment() {
 
-    private lateinit var adapter: BookShortAdapter
+    private lateinit var adapter: BookLongAdapter
+    private var selectedCategory: String? = null
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        selectedCategory = requireActivity().intent.getStringExtra(CategoryFragment.EXTRA_SELECTED_CATEGORY)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_bookshort, container, false)
+        return inflater.inflate(R.layout.fragment_books_long, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.bookRecylerView)
-        recyclerView.layoutManager = GridLayoutManager(requireContext(),2)
 
-        adapter = BookShortAdapter(Book.bookList,requireContext())
+        val filteredList = Book.bookList.filter { it.categories.contains(selectedCategory) }
+
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.bookRecylerView)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        adapter = BookLongAdapter(filteredList,requireContext())
         recyclerView.adapter = adapter
     }
 }

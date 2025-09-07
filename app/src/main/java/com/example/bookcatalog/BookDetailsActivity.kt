@@ -7,9 +7,10 @@ import android.widget.Toast
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-
+import androidx.activity.viewModels
 class BookDetailsActivity : AppCompatActivity() {
     private var isFavorite: Boolean = false
+    private val favouriteViewModel: FavouriteViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +52,7 @@ class BookDetailsActivity : AppCompatActivity() {
 
         favoriteButton.setOnClickListener {
             book?.let {
+                favouriteViewModel.toggle(it)
                 toggleFavorite()
                 updateFavoriteButton(favoriteButton)
                 saveFavoriteStatus(it)
