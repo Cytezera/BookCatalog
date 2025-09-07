@@ -20,6 +20,8 @@ class BookLongAdapter(
     class BookViewHolder(view:View) : RecyclerView.ViewHolder(view){
         val textTitle : TextView = view.findViewById(R.id.textTitle)
         val bookImage : ImageView = view.findViewById(R.id.bookImage)
+
+        val bookDesc : TextView = view.findViewById(R.id.textDesc)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -36,6 +38,7 @@ class BookLongAdapter(
 
         holder.textTitle.text = book.title
         holder.bookImage.setImageResource(book.imageId)
+        holder.bookDesc.text = book.desc
 
         holder.itemView.setOnClickListener{
             val intent = Intent(context, BookDetailsActivity::class.java)

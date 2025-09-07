@@ -33,10 +33,11 @@ class BooksLongFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-        val filteredList = Book.bookList.filter { it.categories.contains(selectedCategory) }
-
+        var filteredList: List<Book> = emptyList()
+        if (selectedCategory == "Favourite" ){
+        }else {
+            filteredList = Book.bookList.filter { it.categories.contains(selectedCategory) }
+        }
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.bookRecylerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

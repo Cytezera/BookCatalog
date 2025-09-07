@@ -17,6 +17,8 @@ class CategoryFragment : Fragment() {
         private const val CAT_FANTASY = "Fantasy"
         private const val CAT_ROMANCE = "Romance"
         private const val CAT_MYSTERY = "Mystery"
+
+        private const val CAT_FAVOURITE = "Favourite"
     }
 
     override fun onCreateView(
@@ -43,6 +45,9 @@ class CategoryFragment : Fragment() {
             openBookActivity(CAT_ROMANCE) }
         btnMystery.setOnClickListener {
             openBookActivity(CAT_MYSTERY) }
+        btnFavourite.setOnClickListener{
+            openBookActivity(CAT_FAVOURITE)
+        }
 
     }
     private fun openBookActivity(category: String){
