@@ -3,13 +3,24 @@
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingVertical="16dp"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/search_container"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/close_button"
+            android:layout_width="111dp"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/categoryLabel"

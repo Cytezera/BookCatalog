@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
 
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 class BookshortFragment : Fragment() {
 
     private lateinit var adapter: BookShortAdapter
+    private val bookViewModel: BookViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,5 +36,17 @@ class BookshortFragment : Fragment() {
 
         adapter = BookShortAdapter(Book.bookList,requireContext())
         recyclerView.adapter = adapter
+
+
+        bookViewModel.searchQuery.observe(viewLifecycleOwner){ query ->
+            val filtered = if (query.isEmpty()){
+                Book.bookList
+            }else{
+                Book.bookList.filter { book ->
+                    book.title.contains(query, ignoreCase = true ) || book.author.contains( query, ignoreCase = true )
+                }
+            }
+            adapter.updateList(filtered)
+        }
     }
 }

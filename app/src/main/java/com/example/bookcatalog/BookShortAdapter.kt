@@ -45,6 +45,11 @@ class BookShortAdapter(
     }
 
     override fun getItemCount(): Int = books.size
+    fun updateList(newList: List<Book>) {
+        books = newList
+        notifyDataSetChanged()
+    }
+
 
 
 }
