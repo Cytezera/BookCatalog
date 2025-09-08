@@ -14,7 +14,7 @@ import android.content.Intent
 
 
 class BookShortAdapter(
-    private val books : List<Book>,
+    private var books : List<Book>,
     private val context : Context
 ): RecyclerView.Adapter<BookShortAdapter.BookViewHolder>(){
     class BookViewHolder(view:View) : RecyclerView.ViewHolder(view){
@@ -45,4 +45,6 @@ class BookShortAdapter(
     }
 
     override fun getItemCount(): Int = books.size
+
+
 }

@@ -14,7 +14,7 @@ import android.content.Intent
 
 
 class BookLongAdapter(
-    private val books : List<Book>,
+    private var books : List<Book>,
     private val context : Context
 ): RecyclerView.Adapter<BookLongAdapter.BookViewHolder>(){
     class BookViewHolder(view:View) : RecyclerView.ViewHolder(view){
@@ -48,4 +48,8 @@ class BookLongAdapter(
     }
 
     override fun getItemCount(): Int = books.size
+    fun updateData(newList: List<Book>){
+        books = newList
+        notifyDataSetChanged()
+    }
 }

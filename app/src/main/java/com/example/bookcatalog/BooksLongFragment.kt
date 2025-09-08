@@ -6,9 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Context
+
 import androidx.recyclerview.widget.GridLayoutManager
 
 
@@ -18,6 +21,7 @@ class BooksLongFragment : Fragment() {
 
     private lateinit var adapter: BookLongAdapter
     private var selectedCategory: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         selectedCategory = requireActivity().intent.getStringExtra(CategoryFragment.EXTRA_SELECTED_CATEGORY)
@@ -35,6 +39,17 @@ class BooksLongFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var filteredList: List<Book> = emptyList()
         if (selectedCategory == "Favourite" ){
+            val sharedPref = requireContext().getSharedPreferences("book_favorites", Context.MODE_PRIVATE)
+            val favIds = sharedPref.all
+                .filterValues { it as? Boolean == true }
+                .keys
+                .mapNotNull { key ->
+                    key.removePrefix("book_").toIntOrNull()
+                }
+
+            // Now filter your Book list using the favIds
+            filteredList = Book.bookList.filter { book -> book.id in favIds }
+
         }else {
             filteredList = Book.bookList.filter { it.categories.contains(selectedCategory) }
         }
@@ -44,5 +59,7 @@ class BooksLongFragment : Fragment() {
 
         adapter = BookLongAdapter(filteredList,requireContext())
         recyclerView.adapter = adapter
+
+
     }
 }

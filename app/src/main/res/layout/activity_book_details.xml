@@ -21,27 +21,17 @@
 
     </LinearLayout>
 
-    <!-- Fragment Container -->
 
-    <FrameLayout
-        android:id="@+id/book_details_container"
+    <TextView
+        android:id="@+id/textTitle"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@android:color/white"
-        android:padding="8dp">
+        android:layout_height="103dp"
+        android:layout_marginTop="2dp"
+        android:maxLines="1"
+        android:text="Book Title"
+        android:textAlignment="center"
+        android:textSize="35sp" />
 
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="match_parent"
-            android:layout_height="163dp"
-            android:layout_marginTop="2dp"
-            android:maxLines="1"
-            android:text="Book Title"
-            android:textAlignment="center"
-            android:textSize="35sp"
-            android:textStyle="bold" />
-    </FrameLayout>
 
     <ImageView
         android:id="@+id/bookImage"

@@ -7,10 +7,8 @@ import android.widget.Toast
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.activity.viewModels
 class BookDetailsActivity : AppCompatActivity() {
     private var isFavorite: Boolean = false
-    private val favouriteViewModel: FavouriteViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +50,10 @@ class BookDetailsActivity : AppCompatActivity() {
 
         favoriteButton.setOnClickListener {
             book?.let {
-                favouriteViewModel.toggle(it)
-                toggleFavorite()
+                toggleFavorite(it)
                 updateFavoriteButton(favoriteButton)
                 saveFavoriteStatus(it)
+
             }
         }
     }
@@ -73,9 +71,16 @@ class BookDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun toggleFavorite() {
+    private fun toggleFavorite(book: Book) {
         isFavorite = !isFavorite
-        val message = if (isFavorite) "Added to favorites" else "Removed from favorites"
+        var message = ""
+        if (isFavorite){
+            message = "Added to favorites"
+        }
+        else {
+            message = "Removed from favorites"
+
+        }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
