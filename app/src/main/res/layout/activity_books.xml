@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingVertical="16dp"
+    android:background="#FAF3E0"
     android:orientation="vertical">
 
 
@@ -18,7 +19,8 @@
             android:id="@+id/close_button"
             android:layout_width="111dp"
             android:layout_height="wrap_content"
-            android:text="Back" />
+            android:text="Back"
+            android:backgroundTint="#F87171"/>
 
     </LinearLayout>
 

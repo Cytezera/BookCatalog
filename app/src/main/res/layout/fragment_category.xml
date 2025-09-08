@@ -19,22 +19,24 @@
             android:layout_weight="1"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
-            android:text="Fantasy"/>
+            android:text="Fantasy"
+            android:backgroundTint="#C8A2C8"/>
         <Button
             android:id="@+id/btnRomance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:layout_weight="1"
-            android:text="Romance"/>
+            android:text="Romance"
+            android:backgroundTint="#C8A2C8"/>
         <Button
             android:id="@+id/btnMystery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="12dp"
-
-            android:text="Mystery"/>
+            android:text="Mystery"
+            android:backgroundTint="#C8A2C8"/>
 
         <Button
             android:id="@+id/btnFavourite"
@@ -42,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="12dp"
-            android:text="Favourite"/>
+            android:text="Favourite"
+            android:backgroundTint="#F59E0B"/>
     </LinearLayout>
 </HorizontalScrollView>

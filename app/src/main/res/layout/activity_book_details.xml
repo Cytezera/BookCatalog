@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FAF3E0"
     android:padding="16dp">
 
     <!-- Top Action Row -->
@@ -17,7 +18,8 @@
             android:id="@+id/close_button"
             android:layout_width="111dp"
             android:layout_height="wrap_content"
-            android:text="Close" />
+            android:text="Close"
+            android:backgroundTint="#F87171"/>
 
     </LinearLayout>
 
