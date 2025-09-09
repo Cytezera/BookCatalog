@@ -9,17 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class CategoryFragment : Fragment() {
 
-    companion object{
-        const val EXTRA_SELECTED_CATEGORY = "selected_category"
-        private const val CAT_FANTASY = "Fantasy"
-        private const val CAT_ROMANCE = "Romance"
-        private const val CAT_MYSTERY = "Mystery"
-
-        private const val CAT_FAVOURITE = "Favourite"
-    }
+    private lateinit var adapter: CategoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,30 +27,15 @@ class CategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val authors = Book.bookList.map { it.author }.distinct()
+        val recyclerView = view.findViewById<RecyclerView>(R.id.categoryRecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
 
-        val btnFantasy =view.findViewById<Button>(R.id.btnFantasy)
-        val btnRomance =view.findViewById<Button>(R.id.btnRomance)
-        val btnMystery = view.findViewById<Button>(R.id.btnMystery)
-        val btnFavourite = view.findViewById<Button>(R.id.btnFavourite)
+        adapter = CategoryAdapter(authors,requireContext())
+        recyclerView.adapter = adapter
 
-        btnFantasy.setOnClickListener {
-            openBookActivity(CAT_FANTASY) }
 
-        btnRomance.setOnClickListener{
-            openBookActivity(CAT_ROMANCE) }
-        btnMystery.setOnClickListener {
-            openBookActivity(CAT_MYSTERY) }
-        btnFavourite.setOnClickListener{
-            openBookActivity(CAT_FAVOURITE)
-        }
 
-    }
-    private fun openBookActivity(category: String){
-        val intent = Intent(requireContext(), BooksActivity::class.java).apply {
-            putExtra(EXTRA_SELECTED_CATEGORY, category)
-
-        }
-        startActivity(intent)
     }
 
 

@@ -21,11 +21,13 @@ class BookDetailsActivity : AppCompatActivity() {
         val titleText: TextView = findViewById(R.id.textTitle)
         val descText: TextView = findViewById(R.id.textDesc)
         val imageView: ImageView = findViewById(R.id.bookImage)
+        val authorName: TextView = findViewById(R.id.textAuthor)
 
         if (book != null) {
             titleText.text = book.title
             descText.text = book.desc
             imageView.setImageResource(book.imageId)
+            authorName.text = book.author
 
             titleText.maxLines = 3
             descText.maxLines = 12

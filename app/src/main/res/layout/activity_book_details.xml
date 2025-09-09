@@ -34,6 +34,15 @@
         android:textAlignment="center"
         android:textSize="35sp" />
 
+    <TextView
+        android:id="@+id/textAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_marginBottom="8dp"
+        android:text="Author Name"
+        android:textAlignment="center"
+        android:textColor="#555555"
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/bookImage"

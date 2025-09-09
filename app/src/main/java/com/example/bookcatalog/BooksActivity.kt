@@ -19,10 +19,20 @@ class BooksActivity : AppCompatActivity() {
 
         val closeButton: Button = findViewById(R.id.close_button)
         val categoryLabel: TextView = findViewById(R.id.categoryLabel)
-        val selectedCategory = intent.getStringExtra(CategoryFragment.EXTRA_SELECTED_CATEGORY)
+        val selectedCategory = intent.getStringArrayListExtra("category")
+        val selectedAuthor = intent.getStringArrayListExtra("author")
 
-        categoryLabel.text = selectedCategory ?: ""
+        val displayText = when {
+            !selectedCategory.isNullOrEmpty() && !selectedAuthor.isNullOrEmpty() ->
+                "Search: ${selectedCategory.joinToString(", ")} | Authors: ${selectedAuthor.joinToString(", ")}"
+            !selectedCategory.isNullOrEmpty() ->
+                "Search: ${selectedCategory.joinToString(", ")}"
+            !selectedAuthor.isNullOrEmpty() ->
+                "Search: ${selectedAuthor.joinToString(", ")}"
+            else -> "Search:"
+        }
 
+        categoryLabel.text = displayText
         closeButton.setOnClickListener { finish() }
         if (savedInstanceState == null){
             supportFragmentManager.beginTransaction()

@@ -20,11 +20,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 class BooksLongFragment : Fragment() {
 
     private lateinit var adapter: BookLongAdapter
-    private var selectedCategory: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        selectedCategory = requireActivity().intent.getStringExtra(CategoryFragment.EXTRA_SELECTED_CATEGORY)
+
     }
 
     override fun onCreateView(
@@ -37,8 +36,11 @@ class BooksLongFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val selectedCategory = requireActivity().intent.getStringArrayListExtra("category")
+        val selectedAuthor = requireActivity().intent.getStringArrayListExtra("author")
+
         var filteredList: List<Book> = emptyList()
-        if (selectedCategory == "Favourite" ){
+        if (selectedCategory?.contains("Favourite") == true){
             val sharedPref = requireContext().getSharedPreferences("book_favorites", Context.MODE_PRIVATE)
             val favIds = sharedPref.all
                 .filterValues { it as? Boolean == true }
@@ -50,8 +52,19 @@ class BooksLongFragment : Fragment() {
             // Now filter your Book list using the favIds
             filteredList = Book.bookList.filter { book -> book.id in favIds }
 
-        }else {
-            filteredList = Book.bookList.filter { it.categories.contains(selectedCategory) }
+        }else if(!selectedCategory.isNullOrEmpty()) {
+            filteredList =
+                Book.bookList.filter { book ->
+                    book.categories.any { it in selectedCategory}
+                }
+
+        }
+
+        if(!selectedAuthor.isNullOrEmpty()){
+            filteredList =
+                Book.bookList.filter{ book ->
+                    selectedAuthor.contains(book.author)
+                }
         }
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.bookRecylerView)
