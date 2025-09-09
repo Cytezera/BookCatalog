@@ -11,15 +11,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 
-
-
-
 class CategoryAdapter(
     private var categories : List<String>,
     private val context : Context
 ): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(){
     class CategoryViewHolder(view:View) : RecyclerView.ViewHolder(view){
-
         val btnText : Button = view.findViewById(R.id.btnText)
     }
 
@@ -30,10 +26,7 @@ class CategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-
-
         val category = categories[position]
-
 
         holder.btnText.text = category
 
@@ -45,7 +38,5 @@ class CategoryAdapter(
             context.startActivity(intent)
         }
     }
-
     override fun getItemCount(): Int = categories.size
-
 }

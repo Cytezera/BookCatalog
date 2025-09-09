@@ -4,11 +4,11 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="12dp">
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:layout_weight="1"/>
 
     <ImageButton
@@ -19,6 +19,7 @@
         android:contentDescription="Filter"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:padding="8dp" />
+
     <ImageButton
         android:id="@+id/btnFavourite"
         android:layout_width="wrap_content"

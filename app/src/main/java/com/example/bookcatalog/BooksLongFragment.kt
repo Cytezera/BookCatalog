@@ -14,9 +14,6 @@ import android.content.Context
 
 import androidx.recyclerview.widget.GridLayoutManager
 
-
-
-
 class BooksLongFragment : Fragment() {
 
     private lateinit var adapter: BookLongAdapter
@@ -48,16 +45,13 @@ class BooksLongFragment : Fragment() {
                 .mapNotNull { key ->
                     key.removePrefix("book_").toIntOrNull()
                 }
-
             // Now filter your Book list using the favIds
             filteredList = Book.bookList.filter { book -> book.id in favIds }
-
         }else if(!selectedCategory.isNullOrEmpty()) {
             filteredList =
                 Book.bookList.filter { book ->
                     book.categories.any { it in selectedCategory}
                 }
-
         }
 
         if(!selectedAuthor.isNullOrEmpty()){
@@ -72,7 +66,5 @@ class BooksLongFragment : Fragment() {
 
         adapter = BookLongAdapter(filteredList,requireContext())
         recyclerView.adapter = adapter
-
-
     }
 }

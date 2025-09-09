@@ -22,5 +22,4 @@
         android:textSize="16sp"
         android:maxLines="2"
         android:paddingBottom="20dp"/>
-
 </LinearLayout>

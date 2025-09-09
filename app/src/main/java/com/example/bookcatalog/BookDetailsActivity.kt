@@ -32,15 +32,6 @@ class BookDetailsActivity : AppCompatActivity() {
             titleText.maxLines = 3
             descText.maxLines = 12
 
-
-            /*
-            if (savedInstanceState == null) {
-                val fragment = BookDetailsFragment.newInstance(book)
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.book_details_container, fragment)
-                    .commit()
-            }
-        */
             loadFavoriteStatus(book)
             updateFavoriteButton(favoriteButton)
         } else {
@@ -55,7 +46,6 @@ class BookDetailsActivity : AppCompatActivity() {
                 toggleFavorite(it)
                 updateFavoriteButton(favoriteButton)
                 saveFavoriteStatus(it)
-
             }
         }
     }
@@ -103,7 +93,6 @@ class BookDetailsActivity : AppCompatActivity() {
             favoriteButton.setBackgroundColor(
                 ContextCompat.getColor(this, android.R.color.holo_blue_light)
             )
-
         }
     }
 }

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class CategoryFragment : Fragment() {
-
     private lateinit var adapter: CategoryAdapter
 
     override fun onCreateView(
@@ -22,7 +21,6 @@ class CategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_category, container,false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,10 +31,5 @@ class CategoryFragment : Fragment() {
 
         adapter = CategoryAdapter(authors,requireContext())
         recyclerView.adapter = adapter
-
-
-
     }
-
-
 }

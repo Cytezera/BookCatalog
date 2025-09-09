@@ -4,19 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import android.widget.ImageButton
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import android.content.Intent
-import android.widget.Toast
-
 
 class SearchFragment : Fragment() {
-
     private lateinit var searchView: SearchView
     private val bookViewModel: BookViewModel by activityViewModels()
 
@@ -57,7 +52,6 @@ class SearchFragment : Fragment() {
             val intent = Intent(requireContext(), BooksActivity::class.java)
             intent.putExtras(bundle)
             startActivity(intent)
-
         }
     }
 
@@ -96,5 +90,4 @@ class SearchFragment : Fragment() {
             }
             .show()
     }
-
 }

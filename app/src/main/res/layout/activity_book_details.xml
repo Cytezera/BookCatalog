@@ -20,9 +20,7 @@
             android:layout_height="wrap_content"
             android:text="Close"
             android:backgroundTint="#F87171"/>
-
     </LinearLayout>
-
 
     <TextView
         android:id="@+id/textTitle"
@@ -68,5 +66,4 @@
         android:drawablePadding="8dp"
         android:text="Add to Favorites"
         android:padding="12dp" />
-
 </LinearLayout>

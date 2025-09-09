@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.widget.ImageView
 import android.content.Intent
 
-
-
 class BookLongAdapter(
     private var books : List<Book>,
     private val context : Context
@@ -32,9 +30,7 @@ class BookLongAdapter(
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
 
-
         val book = books[position]
-
 
         holder.textTitle.text = book.title
         holder.bookImage.setImageResource(book.imageId)

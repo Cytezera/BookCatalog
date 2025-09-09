@@ -8,10 +8,6 @@ import androidx.core.view.WindowInsetsCompat
 import android.widget.TextView
 import android.widget.Button
 
-
-
-
-
 class BooksActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +35,5 @@ class BooksActivity : AppCompatActivity() {
                 .replace(R.id.book_long_container, BooksLongFragment())
                 .commit()
         }
-
-
     }
 }
